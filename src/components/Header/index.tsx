@@ -1,4 +1,4 @@
-import {Flex} from '@chakra-ui/react';
+import {Flex, useBreakpointValue} from '@chakra-ui/react';
 import Logo from './Logo';
 
 import NotificationsNav from './NotificationsNav';
@@ -6,6 +6,11 @@ import Profile from './Profile';
 import SearchBox from './SearchBox';
 
 export function Header() {
+
+    const isWideVersion = useBreakpointValue({
+        base: false,
+        lg: true
+    })
     return (
         <Flex w='100%' as='header' maxWidth={1480} h='20' marginX='auto' mt='4' px='6' align='center' >
             
@@ -17,7 +22,7 @@ export function Header() {
              ml='auto'
              >
                  <NotificationsNav />
-                 <Profile />
+                 <Profile showProfileData={isWideVersion} />
              </Flex>
         </Flex>
     );
